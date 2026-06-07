@@ -136,7 +136,9 @@ def cinema_hall_detail(request, pk):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == "PATCH":
-        serializer = CinemaHallSerializer(cinema_hall, data=request.data, partial=True)
+        serializer = CinemaHallSerializer(cinema_hall,
+                                          data=request.data,
+                                          partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
