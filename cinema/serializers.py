@@ -25,3 +25,8 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ["id", "title", "description", "duration", "actors", "genres"]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["actors"].required = False
+        self.fields["genres"].required = False
